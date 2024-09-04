@@ -1,0 +1,93 @@
+@model SchoolProject.Models.NurseRequest
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table id="PatientsTable" class="table">
+                <thead>
+                    <tr>
+                        <th>QN/HN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="detailRow">
+                        <td>
+                            <input name="Patients[0].Qn" class="form-control" required />
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger removeRow">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-primary" id="addRow">Add Row</button>
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+            <div class="form-group">
+                <label asp-for="PatientType" class="control-label">PatietType</label>
+                <input asp-for="PatientType" class="form-control" />
+                <span asp-validation-for="PatientType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PortalType" class="control-label">PortalType</label>
+                <input asp-for="PortalType" class="form-control" />
+                <span asp-validation-for="PortalType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Remark" class="control-label">Remark</label>
+                <input asp-for="Remark" class="form-control" />
+                <span asp-validation-for="Remark" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartPoint" class="control-label">StartPoint</label>
+                <input asp-for="StartPoint" class="form-control" />
+                <span asp-validation-for="StartPoint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndPoint" class="control-label">EndPoint</label>
+                <input asp-for="EndPoint" class="form-control" />
+                <span asp-validation-for="EndPoint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            // Add row
+            $('#addRow').click(function () {
+                var rowCount = $('#PatientsTable tbody tr').length;
+            var newRow = $('.detailRow').first().clone();
+            newRow.find('input').val('');
+                newRow.find('input').attr('name', 'Patients[' + rowCount + '].Qn');
+                newRow.appendTo($('#PatientsTable tbody'));
+        });
+            $(document).on('click', '.removeRow', function () {
+                if ($('#PatientsTable tbody tr').length > 1) {
+                    $(this).closest('tr').remove();
+                }
+            });
+        });
+    </script>
+}

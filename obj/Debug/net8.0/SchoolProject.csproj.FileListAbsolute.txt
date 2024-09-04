@@ -135,3 +135,4 @@
 /Users/home/Desktop/SchoolProject/obj/Debug/net8.0/SchoolProject.pdb
 /Users/home/Desktop/SchoolProject/obj/Debug/net8.0/SchoolProject.genruntimeconfig.cache
 /Users/home/Desktop/SchoolProject/obj/Debug/net8.0/ref/SchoolProject.dll
+/Users/home/Desktop/SchoolProject/obj/Debug/net8.0/SchoolProject.sourcelink.json

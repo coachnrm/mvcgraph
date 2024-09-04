@@ -10,5 +10,7 @@ namespace SchoolProject.Data
         }
 
         public DbSet<SalesData> SalesData {get; set;}
+        public DbSet<NurseRequest> NurseRequests {get; set;}
+        public DbSet<Patient> Patients {get; set; }
     }
 }
